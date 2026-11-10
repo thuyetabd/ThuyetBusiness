@@ -1,0 +1,45 @@
+THUYẾT BUSINESS v1.4 — Windows 10/11 64-bit
+
+CẬP NHẬT
+Chuột phải icon app cũ cạnh đồng hồ > Thoát hoàn toàn. Giải nén gói mới vào một thư mục cố định rồi mở ThuyetBusiness.exe. Không chạy trực tiếp từ ZIP.
+App dùng lại hồ sơ đăng nhập và cài đặt cũ. Không xóa thư mục hồ sơ ứng dụng trong %APPDATA% khi cập nhật.
+
+SỬ DỤNG
+1. Đăng nhập Facebook và mở Hộp thư của Trang cần theo dõi.
+2. Giữ tab Tất cả tin nhắn. App đọc trực tiếp bộ đếm tin chưa đọc.
+3. Bấm X hoặc thu nhỏ để ẩn xuống khay hệ thống cạnh đồng hồ. Nhấp icon để mở lại; chuột phải để mở menu.
+4. Mỗi sự kiện tin mới app phát hiện sẽ báo một lần và thêm chấm đỏ trên icon khay hệ thống. Mở lại app hoặc chọn Xóa cảnh báo để xóa chấm đỏ. Không có nhắc chuông định kỳ.
+5. Muốn tắt hẳn app: chọn Thoát hoàn toàn trong menu khay hệ thống.
+
+MỞ CÙNG WINDOWS
+Chuột phải icon > Mở cùng Windows. Mở lại menu để thấy dấu tích. App kiểm tra trạng thái thực tế của Windows sau khi ghi; có lỗi sẽ hiện thông báo.
+Khi đăng nhập Windows, app chạy ẩn ở khay hệ thống, không bật cửa sổ. Chọn lại để bỏ dấu tích và tắt khởi động cùng Windows.
+Đây là thiết lập cho lần đăng nhập Windows tiếp theo, không mở thêm cửa sổ ngay lúc bấm.
+Nếu đổi vị trí thư mục app: mở app ở vị trí mới và chọn lại Mở cùng Windows để cập nhật đường dẫn. Nên để app ở thư mục cố định.
+Có thể xem thêm trong Windows Settings > Apps > Startup hoặc Task Manager > Startup apps.
+
+COOKIE JSON
+Vào Ứng dụng > Đăng nhập bằng cookie JSON… hoặc chọn mục tương tự ở menu khay hệ thống.
+Hỗ trợ mảng cookie JSON, đối tượng {"cookies":[...]} và appstate dạng [{"key":"...","value":"...","domain":".facebook.com","path":"/"}].
+Cần c_user và xs còn hạn, của một tài khoản. Chỉ nhập cookie thuộc Facebook. App thay bộ cookie hiện tại, thử khôi phục phiên cũ nếu có lỗi ghi.
+App không lưu bản sao JSON, không gửi cookie đến máy chủ riêng. Cookie nằm trong hồ sơ trình duyệt của app và được dùng để kết nối Facebook.
+Cookie session chỉ giữ trong phiên chạy hiện tại; cookie có thời hạn giữ theo hạn gốc. Facebook vẫn có thể thu hồi phiên hoặc yêu cầu xác minh/2FA.
+Giữ riêng file cookie, không chia sẻ cho người khác hoặc gửi vào chat.
+
+KIỂM TRA NHẬN TIN
+Ứng dụng > Trạng thái nhận tin: cần thấy Đã nhận diện bộ đếm tin nhắn và số chưa đọc khớp với tab. Có hiển thị phiên bản và trạng thái mở cùng Windows.
+Thu nhỏ rồi gửi tin từ tài khoản khác để số tăng từ 0 lên 1. App chờ khoảng 1–2 giây để số ổn định trước khi báo. Nếu mở hộp thư đang có tin chưa đọc, app báo một lần.
+Không nghe chuông: bật Chuông tin nhắn trong menu, kiểm tra Volume Mixer và thiết bị âm thanh của Windows.
+Không thấy banner: kiểm tra Settings > System > Notifications và Focus Assist/Do not disturb. App tạo shortcut trong Start Menu để đăng ký thông báo.
+
+GIỚI HẠN
+- App độc lập, không phải ứng dụng chính thức của Meta. Gói chưa ký số.
+- Phát hiện chủ yếu dựa trên bộ đếm Tất cả tin nhắn, có bổ sung Web Notification của Meta và số trong tiêu đề. Nếu nhiều tin đến cùng hội thoại nhưng bộ đếm không tăng và Meta không phát thông báo, có thể không báo thêm.
+- Chỉ theo dõi phiên/Trang đang mở, không bảo đảm từng tin nhắn hoặc mọi Trang cùng lúc. Chưa tích hợp webhook Messenger/API.
+- App không ngăn máy ngủ. Windows tự ngủ theo cài đặt của bạn. Mất mạng, tắt máy hoặc ngủ máy sẽ gián đoạn nhận tin; app thử tải lại khi kết nối lỗi hoặc sau khi thức dậy.
+
+MÃ NGUỒN
+Thư mục source chứa mã ứng dụng, hướng dẫn và các kiểm tra. Không cần Node.js để dùng file EXE.
+Muốn tự dựng: cài Node.js LTS, chạy npm ci, npm test rồi npm run package trong source. Kết quả nằm trong dist.
+Gói sản xuất chỉ chứa mã cần chạy và tài nguyên, không chứa thư viện phát triển hoặc bài kiểm tra trong app.asar.
+Các kiểm tra tự động mô phỏng DOM/IPC/thiết lập Windows, không thay thế thử khởi động cùng Windows và nhận tin trên máy thực tế.

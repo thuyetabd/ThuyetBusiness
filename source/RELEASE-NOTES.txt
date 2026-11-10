@@ -1,0 +1,23 @@
+THUYẾT BUSINESS 1.4.0
+
+- Bỏ hoàn toàn tính năng giữ máy thức, mục menu và yêu cầu ngăn ngủ của ứng dụng. Thiết lập awake cũ không còn được sử dụng.
+- Thêm chấm đỏ rõ nét trên icon khay hệ thống khi app phát hiện tin mới.
+- Xóa chấm đỏ khi mở lại app (nhấp icon hoặc thông báo) hoặc chọn Xóa cảnh báo. Tin mới tiếp theo bật lại chấm đỏ.
+- Không nhắc chuông định kỳ. Tính năng nhận tin, cookie JSON và mở cùng Windows tiếp tục được giữ.
+- Đã kiểm tra trạng thái icon bình thường → chấm đỏ → xóa → bật lại, và kiểm tra hồi quy các chức năng nhận tin/khởi động.
+
+THUYẾT BUSINESS 1.3.0
+
+- Bỏ hoàn toàn nhắc chuông mỗi 20 giây và tùy chọn tương ứng.
+- Mỗi sự kiện tin mới được phát hiện chỉ phát một chuông.
+- Sửa trạng thái Mở cùng Windows: đọc/ghi cùng đường dẫn và tham số --hidden, xác minh kết quả sau khi đổi, phản ánh trạng thái bị Windows vô hiệu hóa.
+- Khởi động ẩn ngay từ lúc tạo cửa sổ, tránh lóe cửa sổ khi đăng nhập Windows.
+- Tối ưu theo dõi DOM: giữ tham chiếu đến các tab tin nhắn, chỉ theo dõi nội dung bộ đếm, định kỳ tìm lại khi cần thay vì quét toàn trang mỗi lần trang thay đổi.
+- Lưu cài đặt bằng file tạm rồi thay thế; thông báo lỗi nếu không lưu được. Bỏ qua thiết lập nhắc chuông cũ.
+- Gộp lịch phục hồi kết nối, tăng khoảng chờ khi lỗi kéo dài, giữ Trang đang mở khi phục hồi và hủy lịch khi thoát.
+- Chỉ giữ tham chiếu thông báo hiện tại để tránh tích lũy tài nguyên.
+- Thêm phiên bản và trạng thái mở cùng Windows vào Trạng thái nhận tin.
+- Chuẩn hóa đóng gói: mã chạy riêng, metadata Windows đúng phiên bản, khóa phiên bản thư viện dựng, kèm nguồn và kiểm tra.
+
+Đã kiểm tra: bộ đếm HTML, phát hiện số tăng, tránh báo lặp, không nhắc lại sau 20 giây, checkbox bật/tắt autostart, khởi động ẩn, lưu cấu hình, phục hồi lỗi kết nối, gửi IPC đến thông báo và âm thanh.
+Chưa kiểm chứng trực tiếp đăng nhập lại Windows trên máy người dùng; cần kiểm tra sau cập nhật.
